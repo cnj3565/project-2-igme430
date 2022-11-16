@@ -17,7 +17,7 @@ html, body {
 nav {
     width: 100%;
     height: 50px;
-    background-color: #55acee;
+    background-color: #005e3e;
 }
 
 nav:nth-child(1) {
@@ -38,27 +38,27 @@ nav:nth-child(1) {
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: #001407;
     transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
     transition: background-color 0.8s ease;
-    background-color: #66bdff;
+    background-color: #3ddd92;
 }
 
-.domoForm {
-    border: 2px solid #338acc;
+.postitForm {
+    border: 2px solid #005e3e;
     height: 35px;
     width: 700px;
     margin-top:0px;
     padding-top:10px;
-    background-color: #55acee;
+    background-color: #0e966d;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
 }
 
-.domoForm label {
+.postitForm label {
     display: inline-block;
     width: 75px;
     margin-left: 10px;
@@ -67,25 +67,25 @@ nav:nth-child(1) {
     color: white;
 }
 
-.domoForm input[type=text] {
+.postitForm input[type=text] {
     float:left;
 }
 
-.makeDomoSubmit {
+.makePostitSubmit {
     transition: background-color 0.4s ease;
     display: inline;
     width: 90px;
-    background-color: #55acee;
+    background-color: #0e966d;
     border-radius: 2px;
     color: white;
     text-decoration: none;
 }
 
-.makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
+.makePostitSubmit:link, .makePostitSubmit:visited, .makePostitSubmit:hover, .makePostitSubmit:active {
     color: white;
 }
 
-.makeDomoSubmit:hover {
+.makePostitSubmit:hover {
     transition: background-color 0.4s ease;
     background-color: #338acc;
 }
@@ -118,7 +118,7 @@ nav:nth-child(1) {
     margin-top: 14px;
     font-size: 1.2em;
     width: 100px;
-    background-color: #55acee;
+    background-color: #0e966d;
     border-radius: 2px;
     border-color: #66acee;
     padding: 3px 0px;
@@ -132,7 +132,7 @@ nav:nth-child(1) {
 
 .formSubmit:hover {
     transition: background-color 0.4s ease;
-    background-color: #338acc;
+    background-color: #0e966d;
 }
 
 #user, #pass, #pass2 {
@@ -151,7 +151,7 @@ nav:nth-child(1) {
     display: none;
 }
 
-#domoMessage {
+#postyMessage {
     top: 250px;
     width: 250px;
     height: 650px;
@@ -161,7 +161,7 @@ nav:nth-child(1) {
     overflow: hidden;
 }
 
-#domoMessage h3 {
+#postyMessage h3 {
     width: 200px;
     position: absolute;
     top: 0px;
@@ -181,7 +181,7 @@ nav:nth-child(1) {
     font-style: italic;
 }
 
-#domo {
+#postit {
     z-index: 225;
     margin-top: -20px;
     margin-left: 135px;
@@ -192,7 +192,7 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 
-#domos {
+#postits {
     width: 40%;
     min-width: 400px;
     border: 2px solid #55acee;
@@ -201,7 +201,7 @@ nav:nth-child(1) {
     margin-top: 100px;
 }
 
-.domo {
+.postit {
     width: 95%;
     margin: 0 auto;
     margin-top: 2px;
@@ -214,11 +214,11 @@ nav:nth-child(1) {
     overflow: hidden;
 }
 
-.domo:hover {
+.postit:hover {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
-    background-color: #66bfff;
+    background-color: #0e966d;
 }
 
 img.domoFace {
@@ -231,7 +231,7 @@ img.domoFace {
     float:left;
 }
 
-h3.emptyDomo {
+h3.emptyPostit {
     width: 400px;
     font-size: 1.5em;
     margin: 0 auto;
@@ -239,7 +239,8 @@ h3.emptyDomo {
     margin-top: 18px;
 }
 
-h3.domoName {
+/* Make these unique */
+h2.postitTitle {
     float:left;
     width: 200px;
     font-weight: bold;
@@ -247,7 +248,7 @@ h3.domoName {
     font-size: 1.5em;
 }
 
-h3.domoAge {
+p.postitContent {
     float:right;
     text-align: left;
     width: 100px;
@@ -256,10 +257,19 @@ h3.domoAge {
     font-size: 1.5em;
 }
 
-.domo:first-child {
+footer.postitAuthor {
+    float:right;
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: 1.5em;
+}
+
+.postit:first-child {
     margin-top: 10px;
 }
 
-.domo:last-child {
+.postit:last-child {
     margin-bottom:10px;
 }

@@ -24,7 +24,7 @@ const PremiumForm = (props) => {
             <label htmlFor="name">Toggle Premium: </label>
             <input id="premiumRadio" type="radio" name="premium" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
-            <input className="makeDomoSubmit" type="submit" value="Make Domo" />
+            <input className="formSubmit" type="submit" value="Premium" />
         </form>
     )
 }
