@@ -3,7 +3,8 @@ const mid = require('./middleware');
 
 const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
-  app.get('/getPostits', mid.requiresLogin, controllers.Postit.getPostits);
+  app.get('/getPostits', mid.requiresLogin, controllers.Postit.getPostitsSelf);
+  app.get('/getPostitsAll', mid.requiresLogin, controllers.Postit.getPostitsAll);
 
   app.get('/premium', mid.requiresLogin, controllers.Account.premiumPage);
   app.post('/premium', mid.requiresLogin, controllers.Account.premiumToggle);

@@ -19,7 +19,11 @@ const makePostit = async (req, res) => {
   try {
     const newPostit = new Postit(postitData);
     await newPostit.save();
-    return res.status(201).json({ title: newPostit.title, content: newPostit.content, author: newPostit.author });
+    return res.status(201).json({
+      title: newPostit.title,
+      content: newPostit.content,
+      author: newPostit.author,
+    });
   } catch (err) {
     console.log(err);
     // duplicate posts can be made, if desired
@@ -27,18 +31,28 @@ const makePostit = async (req, res) => {
   }
 };
 
-// Make an option to see everyone's posts, or just your own. Depends on current page
-const getPostitsSelf = (req, res) => PostitModel.findByOwner(req.session.account._id, (err, docs) => {
-  if (err) {
-    console.log(err);
-    return res.status(400).json({ error: 'An error occured! ' });
-  }
+// Make an option to see everyone's posts,
+// or just your own. Depends on current page
+const getPostitsSelf = (req, res) => {
+  PostitModel.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured! ' });
+    }
 
-  return res.json({ postits: docs });
-});
+    return res.json({ postits: docs });
+  });
+};
+
+const getPostitsAll = (req, res) => {
+  const docs = PostitModel.find();
+
+  return res.json({ positis: docs });
+};
 
 module.exports = {
   makerPage,
   makePostit,
   getPostitsSelf,
+  getPostitsAll,
 };

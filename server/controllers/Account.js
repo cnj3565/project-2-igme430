@@ -3,7 +3,7 @@ const models = require('../models');
 const { Account } = models;
 
 const premiumPage = (req, res) => {
-  res.render('premium', {csrfToken: req.csrfToken() });
+  res.render('premium', { csrfToken: req.csrfToken() });
 };
 
 const premiumToggle = async (req, res) => {

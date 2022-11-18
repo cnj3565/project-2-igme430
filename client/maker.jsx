@@ -6,8 +6,6 @@ const handlePostit = (e) => {
 
     const title = e.target.querySelector('#postitTitle').value;
     const content = e.target.querySelector("#postitContent").value;
-    // Make this the username of the account currently in use
-    const author = e.target.querySelector("#postitAuthor").value;
     const _csrf = e.target.querySelector("#_csrf").value;
 
     if(!title || !content) {
@@ -15,7 +13,7 @@ const handlePostit = (e) => {
         return false;
     }
 
-    helper.sendPost(e.target.action, {title, content, author, _csrf}, loadDomosFromServer);
+    helper.sendPost(e.target.action, {title, content, _csrf}, loadDomosFromServer);
 
     return false;
 }
@@ -51,9 +49,7 @@ const PostitList = (props) => {
 
     const postitNodes = props.postits.map(postit => {
         return (
-            // likely will remove the img line
             <div key={postit._id} className="postit">
-                <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
                 <h2 className="postitTitle"> {postit.title} </h2>
                 <p className="postitContent"> {postit.content} </p>
                 <footer className="postitAuthor"> Written by {postit.author} </footer>
