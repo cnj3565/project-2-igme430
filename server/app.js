@@ -17,7 +17,7 @@ const router = require('./router.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const dbURI = process.envMONGODB_URI || 'mongodb://127.0.0.1/DomoMaker';
+const dbURI = process.envMONGODB_URI || 'mongodb+srv://cnjDBadmin:Ldn9iLaR7tv8nugZ@cluster0.fecwwg5.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(dbURI, (err) => {
   if (err) {
     console.log('Could not connect to database');
@@ -26,7 +26,7 @@ mongoose.connect(dbURI, (err) => {
 });
 
 const redisURL = process.env.REDISCLOUD_URL
-  || 'redis://default:REDIS_CLOUD_PASSWORD@REDIS_CLOUD:REDIS_CLOUD_PORT';
+  || 'redis://default:jiljUcgrF6tUARzuleJJ8PXmeuGfSQII@redis-14510.c10.us-east-1-4.ec2.cloud.redislabs.com:14510';
 
 const redisClient = redis.createClient({
   legacyMode: true,
@@ -53,7 +53,7 @@ app.use(session({
   store: new RedisStore({
     client: redisClient,
   }),
-  secret: 'Domo Arigato',
+  secret: 'Ready2Post',
   resave: true,
   saveUninitialized: true,
   cookie: {

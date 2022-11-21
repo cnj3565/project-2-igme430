@@ -13,7 +13,7 @@ const handlePostit = (e) => {
         return false;
     }
 
-    helper.sendPost(e.target.action, {title, content, _csrf}, loadDomosFromServer);
+    helper.sendPost(e.target.action, {title, content, _csrf}, loadPostitsFromServer);
 
     return false;
 }
@@ -35,7 +35,7 @@ const PostitForm = (props) => {
             <input className="makePostitSubmit" type="submit" value="Make Postit" />
         </form>
         // the page should automatically detect username - no field necessary
-    )
+    );
 }
 
 const PostitList = (props) => {
@@ -77,6 +77,8 @@ const init = async () => {
     const response = await fetch('/getToken');
     const data = await response.json();
 
+    console.log("Init Called");
+
     ReactDOM.render(
         <PostitForm csrf={data.csrfToken} />,
         document.getElementById('makePostit')
@@ -88,4 +90,6 @@ const init = async () => {
     );
 
     loadPostitsFromServer();
-}
+};
+
+window.onload = init;

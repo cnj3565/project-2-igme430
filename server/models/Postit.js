@@ -35,7 +35,7 @@ PostitSchema.statics.toAPI = (doc) => ({
   author: doc.author,
 });
 
-PostitSchema.statics.toAPI = (authorId, callback) => {
+PostitSchema.statics.findByOwner = (authorId, callback) => {
   const search = {
     // Convert the string authorId to object id
     author: mongoose.Types.ObjectId(authorId),

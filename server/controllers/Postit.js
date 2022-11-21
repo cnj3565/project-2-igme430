@@ -3,7 +3,15 @@ const PostitModel = require('../models/Postit');
 
 const { Postit } = models;
 
-const makerPage = (req, res) => res.render('app');
+const makerPage = (req, res) => {
+  Postit.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error has occured! ' });
+    }
+    return res.render('app', { csrfToken: req.csrfToken(), postits: docs });
+  });
+};
 
 const makePostit = async (req, res) => {
   if (!req.body.title || !req.body.content) {
