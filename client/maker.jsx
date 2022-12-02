@@ -30,7 +30,7 @@ const PostitForm = (props) => {
             <label htmlFor="title">Your Post's Title: </label>
             <input id="postitTitle" type="text" name="title" placeholder="My Title" />
             <label htmlFor="content">Write Your Post Here: </label>
-            <input id="postitContent" type="text" name="content" />
+            <textarea id="postitContent" cols="40" rows="10" type="text" name="content" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="makePostitSubmit" type="submit" value="Make Postit" />
         </form>
