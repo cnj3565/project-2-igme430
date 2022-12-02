@@ -39,7 +39,6 @@ const PostitForm = (props) => {
 }
 
 const PostitList = (props) => {
-    console.log(props);
     
     if(props.postits.length === 0) {
         console.log("0 Length - INCORRECT");
@@ -66,7 +65,7 @@ const PostitList = (props) => {
     console.log("Default Return");
 
     return (
-        <div classname="postitList">
+        <div className="postitList">
             {postitNodes}
         </div>
     );
@@ -75,9 +74,10 @@ const PostitList = (props) => {
 const loadPostitsFromServer = async () => {
     const response = await fetch('/getPostits');
     const data = await response.json();
+    console.log(data)
     ReactDOM.render(
-        <PostitList postit={data.postits} />,
-        document.getElementById('postits')
+        <PostitList postits={data.postits} />,
+        document.getElementById('postitFeed')
     );
 }
 
