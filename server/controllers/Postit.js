@@ -21,7 +21,7 @@ const makePostit = async (req, res) => {
   const postitData = {
     title: req.body.title,
     content: req.body.content,
-    author: req.session.account_id,
+    author: req.session.account._id,
   };
 
   try {
@@ -47,7 +47,6 @@ const getPostitsSelf = (req, res) => {
       console.log(err);
       return res.status(400).json({ error: 'An error occured! ' });
     }
-
     return res.json({ postits: docs });
   });
 };
@@ -55,7 +54,7 @@ const getPostitsSelf = (req, res) => {
 const getPostitsAll = (req, res) => {
   const docs = PostitModel.find();
 
-  return res.json({ positis: docs });
+  return res.json({ postits: docs });
 };
 
 module.exports = {

@@ -85,7 +85,7 @@ nav:nth-child(1) {
     width:720px;
     margin-left:auto;
     margin-right:auto;
-    height:64%;
+    height:40%;
     padding-top:20px;
     background-color: #800;
     border-bottom-right-radius: 4px;
@@ -164,12 +164,13 @@ textarea {
     text-align: center;
     margin: 0 auto;
     margin-top: 14px;
+    margin-bottom: 14px;
     font-size: 1.2em;
     width: 120px;
     background-color: #800;
     border-radius: 2px;
-    border-color: #fbff22;
-    padding: 6px 6px;
+    border-color: #b8bb17;
+    padding: 6px 6px 6px 6px;
     color: white;
     text-decoration: none;
 }
@@ -240,7 +241,7 @@ textarea {
     transform: rotate(330deg);
 }
 
-#postits {
+#postitFeed {
     width: 40%;
     min-width: 400px;
     border: 2px solid #fbff22;

@@ -39,7 +39,11 @@ const PostitForm = (props) => {
 }
 
 const PostitList = (props) => {
-    if(props.postit.length === 0) {
+    console.log(props);
+    
+    if(props.postits.length === 0) {
+        console.log("0 Length - INCORRECT");
+        
         return (
             <div className="postitList">
                 <h3 className="emptyPostit">No Posts Have Been Made Yet!</h3>
@@ -48,6 +52,8 @@ const PostitList = (props) => {
     }
 
     const postitNodes = props.postits.map(postit => {
+        console.log("Map Function - Probably Right");
+        
         return (
             <div key={postit._id} className="postit">
                 <h2 className="postitTitle"> {postit.title} </h2>
@@ -56,6 +62,8 @@ const PostitList = (props) => {
             </div>
         );
     });
+
+    console.log("Default Return");
 
     return (
         <div classname="postitList">
@@ -77,8 +85,6 @@ const init = async () => {
     const response = await fetch('/getToken');
     const data = await response.json();
 
-    console.log("Init Called");
-
     ReactDOM.render(
         <PostitForm csrf={data.csrfToken} />,
         document.getElementById('makePostit')
@@ -86,7 +92,7 @@ const init = async () => {
 
     ReactDOM.render(
         <PostitList postits={[]} />,
-        document.getElementById('postits')
+        document.getElementById('postitFeed')
     );
 
     loadPostitsFromServer();
