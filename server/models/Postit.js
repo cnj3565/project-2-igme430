@@ -5,6 +5,7 @@ let PostitModel = {};
 
 const setName = (name) => _.escape(name).trim();
 
+// edit author to contain username string, then add a second 'owner' or 'op' value for internal ID
 const PostitSchema = new mongoose.Schema({
   title: {
     type: String,

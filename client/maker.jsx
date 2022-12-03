@@ -41,8 +41,6 @@ const PostitForm = (props) => {
 const PostitList = (props) => {
     
     if(props.postits.length === 0) {
-        console.log("0 Length - INCORRECT");
-        
         return (
             <div className="postitList">
                 <h3 className="emptyPostit">No Posts Have Been Made Yet!</h3>
@@ -50,19 +48,16 @@ const PostitList = (props) => {
         );
     }
 
+    // Find a way to return postits in reverse chronological order, maybe
     const postitNodes = props.postits.map(postit => {
-        console.log("Map Function - Probably Right");
-        
         return (
             <div key={postit._id} className="postit">
-                <h2 className="postitTitle"> {postit.title} </h2>
-                <p className="postitContent"> {postit.content} </p>
+                <h2 className="postitTitle"> {postit.title} </h2><br></br>
+                <p className="postitContent"> {postit.content} </p><br></br>
                 <footer className="postitAuthor"> Written by {postit.author} </footer>
             </div>
         );
     });
-
-    console.log("Default Return");
 
     return (
         <div className="postitList">
@@ -74,7 +69,6 @@ const PostitList = (props) => {
 const loadPostitsFromServer = async () => {
     const response = await fetch('/getPostits');
     const data = await response.json();
-    console.log(data)
     ReactDOM.render(
         <PostitList postits={data.postits} />,
         document.getElementById('postitFeed')
