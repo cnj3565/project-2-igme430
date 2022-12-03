@@ -52,8 +52,8 @@ const PostitList = (props) => {
     const postitNodes = props.postits.map(postit => {
         return (
             <div key={postit._id} className="postit">
-                <h2 className="postitTitle"> {postit.title} </h2><br></br>
-                <p className="postitContent"> {postit.content} </p><br></br>
+                <h2 className="postitTitle"> {postit.title} </h2>
+                <p className="postitContent"> {postit.content} </p>
                 <footer className="postitAuthor"> Written by {postit.author} </footer>
             </div>
         );
