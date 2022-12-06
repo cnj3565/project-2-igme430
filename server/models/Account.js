@@ -35,6 +35,7 @@ const AccountSchema = new mongoose.Schema({
   },
   premium: {
     type: Boolean,
+    required: true,
   },
   createdDate: {
     type: Date,
@@ -46,6 +47,7 @@ const AccountSchema = new mongoose.Schema({
 AccountSchema.statics.toAPI = (doc) => ({
   username: doc.username,
   _id: doc._id,
+  premium: doc.premium,
 });
 
 // Helper function to hash a password
@@ -70,6 +72,29 @@ AccountSchema.statics.authenticate = async (username, password, callback) => {
       return callback(null, doc);
     }
     return callback();
+  } catch (err) {
+    return callback(err);
+  }
+};
+
+AccountSchema.statics.changePremium = async (username, premiumTog, callback) => {
+  try {
+    const doc = await AccountModel.findOne({ username }).exec();
+    if (!doc) {
+      return callback();
+    }
+
+    console.log(doc.username);
+    console.log(doc.premium);
+    AccountModel.updateOne(
+      { username: doc.username },
+      {
+        $set: { "premium": premiumTog }
+      }
+    );
+    console.log(doc.premium);
+
+    return callback(null);
   } catch (err) {
     return callback(err);
   }

@@ -51,13 +51,13 @@ const LoginWindow = (props) => {
             method="POST"
             className="mainForm"
         >
-            <div class="formHolder">
+            <div className="formHolder">
                 <label htmlFor="username">Username: </label>
                 <input id="user" type="text" name="username" placeholder="username" /><br></br>
                 <label htmlFor="pass">Password: </label>
                 <input id="pass" type="password" name="pass" placeholder="password" />
                 <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
-                <input className="formSubmit" type="submit" value="Sign In" />
+                <input className="formSubmit" type="submit" value="Log In" />
             </div>
         </form>
     );
@@ -72,15 +72,15 @@ const SignupWindow = (props) => {
             method="POST"
             className="mainForm"
         >
-            <div class="formHolder">
+            <div className="formHolder">
                 <label htmlFor="username">Username: </label>
-                <input id="user" type="text" name="username" placeholder="username" />
+                <input id="user" type="text" name="username" placeholder="username" /><br></br>
                 <label htmlFor="pass">Password: </label>
-                <input id="pass" type="password" name="pass" placeholder="password" />
-                <label htmlFor="pass2">Password: </label>
-                <input id="pass2" type="password" name="pass2" placeholder=" retype password" />
+                <input id="pass" type="password" name="pass" placeholder="password" /><br></br>
+                <label htmlFor="pass2">Retype Password: </label>
+                <input id="pass2" type="password" name="pass2" placeholder="retype password" />
                 <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
-                <input className="formSubmit" type="submit" value="Sign In" />
+                <input className="formSubmit" type="submit" value="Sign Up" />
             </div>
         </form>
     );
@@ -92,8 +92,6 @@ const init = async () => {
 
     const loginButton = document.getElementById('loginButton');
     const signupButton = document.getElementById('signupButton');
-
-    console.log("Login Called")
 
     loginButton.addEventListener('click', (e) => {
         e.preventDefault();

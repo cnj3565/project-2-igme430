@@ -4,7 +4,7 @@ const handlePremium = (e) => {
     e.preventDefault();
     helper.hideError();
 
-    const premium = e.target.querySelector('#premiumRadio').value;
+    const premium = e.target.querySelector('#premiumCheck').checked;
     const _csrf = e.target.querySelector("#_csrf").value;
 
     helper.sendPost(e.target.action, {premium, _csrf});
@@ -21,10 +21,13 @@ const PremiumForm = (props) => {
             method="POST"
             className="premiumForm"
         >
-            <label htmlFor="name">Toggle Premium: </label>
-            <input id="premiumRadio" type="radio" name="premium" />
-            <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
-            <input className="formSubmit" type="submit" value="Premium" />
+            <div className="formHolder">
+                <p>Purchase a subscription for the Premium service to enjoy a cooler site experience!</p>
+                <label id="premLabel" htmlFor="name">Toggle Premium: </label>
+                <input id="premiumCheck" type="checkbox" name="premium" defaultChecked={false} />
+                <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
+                <input className="formSubmit" type="submit" value="Change Effect" />
+            </div>
         </form>
     )
 }
@@ -37,6 +40,14 @@ const init = async () => {
         <PremiumForm csrf={data.csrfToken} />,
         document.getElementById('content')
     );
+
+    const account = await fetch('/getAccount');
+    const accData = await account.json();
+
+    let checkbox = document.querySelector('#premiumCheck');
+    if(accData.account.premium) {
+        checkbox.defaultChecked = true;
+    }
 }
 
 window.onload = init;

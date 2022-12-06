@@ -22,7 +22,7 @@ const dashboardPage = (req, res) => {
     }
     return res.render('userfeed', { csrfToken: req.csrfToken(), postits: docs });
   });
-}
+};
 
 const makePostit = async (req, res) => {
   if (!req.body.title || !req.body.content) {

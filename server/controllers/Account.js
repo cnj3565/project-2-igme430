@@ -7,16 +7,16 @@ const premiumPage = (req, res) => {
 };
 
 const premiumToggle = async (req, res) => {
-  const premium = `${req.body.premium}`;
+  const premiumBool = `${req.body.premium}`;
+  console.log(`Premium Toggle: ${premiumBool}`);
 
-  try {
-    req.session.Account.premium = premium;
-    return res.status(201).json({ message: 'Premium status updated.' });
-  } catch (err) {
-    console.log(err);
+  return Account.changePremium(req.session.account.username, premiumBool, (err) => {
+    if (err) {
+      return res.status(400).json({ error: 'An error occured.' });
+    }
 
-    return res.status(400).json({ error: 'An error occured.' });
-  }
+    return res.json({ redirect: '/maker' });
+  });
 };
 
 const loginPage = (req, res) => {
@@ -78,12 +78,15 @@ const signup = async (req, res) => {
 
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 
+const getAccount = (req, res) => res.json({ account: req.session.account });
+
 module.exports = {
   loginPage,
   login,
   logout,
   signup,
   getToken,
+  getAccount,
   premiumPage,
   premiumToggle,
 };
