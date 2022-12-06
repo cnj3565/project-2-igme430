@@ -20,6 +20,11 @@ const PostitSchema = new mongoose.Schema({
     set: setName,
   },
   author: {
+    type: String,
+    required: true,
+    trim: false,
+  },
+  owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
     ref: 'Account',
@@ -34,15 +39,16 @@ PostitSchema.statics.toAPI = (doc) => ({
   title: doc.title,
   content: doc.content,
   author: doc.author,
+  owner: doc.owner,
 });
 
 PostitSchema.statics.findByOwner = (authorId, callback) => {
   const search = {
     // Convert the string authorId to object id
-    author: mongoose.Types.ObjectId(authorId),
+    owner: mongoose.Types.ObjectId(authorId),
   };
 
-  return PostitModel.find(search).select('title content').lean().exec(callback);
+  return PostitModel.find(search).select('title content author').lean().exec(callback);
 };
 
 PostitModel = mongoose.model('Postit', PostitSchema);

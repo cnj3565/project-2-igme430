@@ -38,3 +38,5 @@ const init = async () => {
         document.getElementById('content')
     );
 }
+
+window.onload = init;

@@ -13,6 +13,17 @@ const makerPage = (req, res) => {
   });
 };
 
+// will change to return postits from all creators
+const dashboardPage = (req, res) => {
+  Postit.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error has occured! ' });
+    }
+    return res.render('userfeed', { csrfToken: req.csrfToken(), postits: docs });
+  });
+}
+
 const makePostit = async (req, res) => {
   if (!req.body.title || !req.body.content) {
     return res.status(400).json({ error: 'All fields are required!' });
@@ -21,7 +32,8 @@ const makePostit = async (req, res) => {
   const postitData = {
     title: req.body.title,
     content: req.body.content,
-    author: req.session.account._id,
+    author: req.session.account.username,
+    owner: req.session.account._id,
   };
 
   try {
@@ -31,6 +43,7 @@ const makePostit = async (req, res) => {
       title: newPostit.title,
       content: newPostit.content,
       author: newPostit.author,
+      owner: newPostit.owner,
     });
   } catch (err) {
     console.log(err);
@@ -59,6 +72,7 @@ const getPostitsAll = (req, res) => {
 
 module.exports = {
   makerPage,
+  dashboardPage,
   makePostit,
   getPostitsSelf,
   getPostitsAll,
