@@ -13,7 +13,6 @@ const makerPage = (req, res) => {
   });
 };
 
-// will change to return postits from all creators
 const dashboardPage = (req, res) => {
   Postit.findByOwner(req.session.account._id, (err, docs) => {
     if (err) {
@@ -52,7 +51,7 @@ const makePostit = async (req, res) => {
   }
 };
 
-
+// gets user's own posts
 const getPostitsSelf = (req, res) => {
   PostitModel.findByOwner(req.session.account._id, (err, docs) => {
     if (err) {
@@ -63,22 +62,23 @@ const getPostitsSelf = (req, res) => {
   });
 };
 
+// gets posts from entire database rather than from single user
 const getPostitsAll = (req, res) => {
   PostitModel.findAll((err, docs) => {
-    if(err) {
+    if (err) {
       console.log(err);
       return res.status(400).json({ error: 'An error occured! ' });
     }
 
     // remakes the Postit array in reverse chronological order
     // which better suits a social media site
-    let revChron = [];
-    for(let i = docs.length-1; i >= 0; i--) {
+    const revChron = [];
+    for (let i = docs.length - 1; i >= 0; i--) {
       revChron.push(docs[i]);
-    };
+    }
 
     return res.json({ postits: revChron });
-  })
+  });
 };
 
 module.exports = {

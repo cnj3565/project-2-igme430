@@ -67,6 +67,8 @@ const PostitList = (props) => {
 };
 
 const loadPostitsFromServer = async () => {
+    
+    // loads different amounts of postits depending on visted page
     let response;
     if(window.location.pathname === "/dashboard"){
         response = await fetch('/getPostitsAll');

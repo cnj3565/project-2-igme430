@@ -10,6 +10,7 @@ const premiumToggle = async (req, res) => {
   const premiumBool = `${req.body.premiumBool}`;
   req.session.account.premium = premiumBool;
 
+  // changes saved premium value in database
   return Account.changePremium(req.session.account.username, premiumBool, (err) => {
     if (err) {
       return res.status(400).json({ error: 'An error occured.' });
@@ -81,6 +82,7 @@ const settingsPage = (req, res) => {
   res.render('settings', { csrfToken: req.csrfToken() });
 };
 
+// in an ideal scenario, should change password
 const changePassword = async (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
@@ -91,7 +93,8 @@ const changePassword = async (req, res) => {
     return res.status(400).json({ error: 'All fields are required!' });
   }
 
-  if(pass === newPass) {
+  // compares new password to make sure it is applicable
+  if (pass === newPass) {
     return res.status(400).json({ error: 'New password is the same as the old password!' });
   }
 
@@ -99,18 +102,22 @@ const changePassword = async (req, res) => {
     return res.status(400).json({ error: 'Passwords do not match!' });
   }
 
+  // encrypts password through hash
+  // WARNING - somehow encrypts differently than signup and thus
+  // renders the password unknowable
   const hashPass = await Account.generateHash(newPass);
 
   return Account.authenticate(username, pass, (err, account) => {
     if (err || !account) {
       return res.status(401).json({ error: 'Original password is incorrect!' });
     }
-    
-    return Account.passwordChanger(req.session.account.username, hashPass, (err) => {
-      if (err) {
+
+    // assigns new password to database
+    return Account.passwordChanger(req.session.account.username, hashPass, (errb) => {
+      if (errb) {
         return res.status(400).json({ error: 'An error occured.' });
       }
-  
+
       return res.status(200).json({ error: 'Passwords successfully changed!' });
     });
   });

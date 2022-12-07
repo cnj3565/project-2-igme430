@@ -51,9 +51,7 @@ PostitSchema.statics.findByOwner = (authorId, callback) => {
   return PostitModel.find(search).select('title content author').lean().exec(callback);
 };
 
-PostitSchema.statics.findAll = (callback) => {
-  return PostitModel.find().select('title content author').lean().exec(callback);
-};
+PostitSchema.statics.findAll = (callback) => PostitModel.find().select('title content author').lean().exec(callback);
 
 PostitModel = mongoose.model('Postit', PostitSchema);
 

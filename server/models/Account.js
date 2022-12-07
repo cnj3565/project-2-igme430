@@ -84,9 +84,13 @@ AccountSchema.statics.changePremium = async (username, premiumTog, callback) => 
       return callback();
     }
 
-    const response = await AccountModel.updateOne({ username: doc.username }, { $set: { premium: premiumTog} });
+    // changes premium value in database
+    const response = await AccountModel.updateOne(
+      { username: doc.username },
+      { $set: { premium: premiumTog } },
+    );
 
-    return callback(null);
+    return callback(response);
   } catch (err) {
     return callback(err);
   }
@@ -99,13 +103,17 @@ AccountSchema.statics.passwordChanger = async (username, newPassword, callback) 
       return callback();
     }
 
-    const response = await AccountModel.updateOne({ username: doc.username }, { $set: { password: newPassword} });
+    // changes saved password in database
+    const response = await AccountModel.updateOne(
+      { username: doc.username },
+      { $set: { password: newPassword } },
+    );
 
-    return callback(null);
+    return callback(response);
   } catch (err) {
     return callback(err);
   }
-}
+};
 
 AccountModel = mongoose.model('Account', AccountSchema);
 module.exports = AccountModel;
