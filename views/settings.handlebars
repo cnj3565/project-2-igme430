@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Postit Page - Login</title>
+  <title>Postit Page - Settings</title>
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <link rel="shortcut icon" href="/assets/img/favicon.png"/>
@@ -9,12 +9,12 @@
 </head>
 <body> 
   <nav><a href="/login"><img id="logo" src="/assets/img/face.png" alt="face logo"/></a>
-    <div class="navlink"><a id="loginButton" href="/login">Login</a></div>
-    <div class="navlink"><a id="signupButton" href="/signup">Sign up</a></div>
+    <div class="navlink"><a href="/maker">Your Posts</a></div>
+    <div class="navlink"><a href="/dashboard">Home</a></div>
+    <div class="navlink"><a href="/premium">Premium</a></div>
+    <div class="navlink"><a href="/logout">Log out</a></div>
   </nav>
   
-  <img id="title" src="assets/img/logo.png" alt="logo">
-
   <section id="content">
 
   </section>
@@ -24,6 +24,6 @@
     <h3><span id="errorMessage"></span></h3>
     <img id="posty" src="assets/img/posty.png" alt="posty"/>
   </div>
-  <script src="/assets/loginBundle.js"></script>
+  <script src="/assets/settingsBundle.js"></script>
 </body>
 </html>

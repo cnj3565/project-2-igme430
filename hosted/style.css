@@ -1,20 +1,24 @@
 html, body {
-    height: 100%;
-    width: 100%;
+    background-color: #fcfdd0;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: #fcfdd0;
     font-family: Tahoma, Verdana, sans-serif;
 }
 
 #logo {
     height: 40px;
-    width: 40;
-    padding-top: 5px;
-    margin-left:10px;
-    float:left;
-    border-radius: 8px;
+    width: 40px;
+    margin-right: 10px;
+    float: right;
+}
+
+#title {
+    display: block;
+    max-width: 480px;
+    max-height: 240px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 nav {
@@ -27,85 +31,84 @@ nav {
     padding: 5px;
     padding-top: 12px;
     margin-right: 30px;
-    color: white;
-    font-size: 1.3em;
-    float: right;
+    float: left;
 }
 
-.navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
+.navlink a {
     color: white;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 4px;
     background-color: #200;
-    transition: background-color 0.4s ease;
+    padding:2px;
+    text-decoration: none;
+    font-size: 1.3em;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .navlink a:hover {
-    transition: background-color 0.8s ease;
-    background-color: #f00;
-}
-
-.mainForm, .premiumForm {
-    height: 300px;
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 350px;
-    font-size: 1.2em;
-}
-
-
-#loginForm {
-    width: 720px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-#signupForm, #premiumForm {
-    width: 720px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align: center;
+    background-color: rgb(190, 0, 0);
 }
 
 .formHolder {
-    border: 4px solid #600;
+    background-color: #ffff91;
     width: 720px;
     margin-left:auto;
     margin-right:auto;
-    background-color: #ffff91;
     padding: 4px;
+    text-align: center;
+    border: 5px solid #600;
+}
+
+.mainForm, .premiumForm, .pwChangeForm {
+    height: 300px;
+    width: 350px;
+    font-size: 1.2em;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+#loginForm, #signupForm, #premiumForm, #pwChangeForm {
+    width: 720px;
+    margin-left:auto;
+    margin-right:auto;
     text-align: center;
 }
 
 .formHolder label {
-    margin-top:6px;
-    margin-bottom:6px;
     text-align: left;
     font-weight:bold;
+    font-size:14pt;
+    margin-top:6px;
+    margin-bottom:6px;
 }
 
-#makePostit {
-    margin:3em;
+#user, #pass, #pass2, #newPass, #newPass2 {
+    text-align: center;
+    width: 180px;
+    font-size: 0.85em;
+    border-radius: 5px;
+}
+
+#user:focus, #pass:focus, #pass2:focus, #newPass:focus, #newPass2:focus {
+    box-shadow: 0px 0px 1px 1px #383838;
 }
 
 #postitForm {
-    border: 8px solid #600;
-    width:720px;
+    background-color: #800;
+    max-width:720px;
+    height:40%;
     margin-left:auto;
     margin-right:auto;
-    height:40%;
+    margin-top:14px;
     padding-top:20px;
-    background-color: #800;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
     text-align:center;
+    border: 8px solid #600;
+    border-radius: 5px;
 }
 
 .postitForm label {
+    color: white;
     font-size: 1.2em;
     float: left;
-    color: white;
     margin-top:8px;
     margin-bottom:8px;
     margin-left:24px;
@@ -129,21 +132,15 @@ textarea {
 }
 
 .makePostitSubmit {
-    transition: background-color 0.4s ease;
-    display: inline;
-    width: 90px;
-    background-color: #800;
-    border-radius: 2px;
     color: white;
+    background-color: #800;
+    min-width: 90px;
+    display: inline;
+    border-radius: 4px;
     text-decoration: none;
 }
 
-.makePostitSubmit:link, .makePostitSubmit:visited, .makePostitSubmit:hover, .makePostitSubmit:active {
-    color: white;
-}
-
 .makePostitSubmit:hover {
-    transition: background-color 0.4s ease;
     background-color: #600;
 }
 
@@ -151,142 +148,65 @@ textarea {
     text-align: center;
 }
 
-.mainForm label {
-    display: inline-block;
-    width: 100px;
-    margin-right: 30px;
-    text-align: right;
-    font-size: 1.2em;
-}
-
 .formSubmit, .makePostitSubmit {
-    transition: background-color 0.4s ease;
+    color: white;
+    background-color: #800;
+    min-width: 120px;
     display: block;
     text-align: center;
-    margin: 0 auto;
+    margin: auto;
     margin-top: 14px;
     margin-bottom: 14px;
     font-size: 1.2em;
-    min-width: 120px;
-    background-color: #800;
     border-radius: 2px;
-    border-color: #b8bb17;
-    padding: 6px 6px 6px 6px;
-    color: white;
+    border-color: #e7c70d;
+    padding: 5px;
     text-decoration: none;
 }
 
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
-}
-
 .formSubmit:hover {
-    transition: background-color 0.4s ease;
     background-color: #800;
-}
-
-#user, #pass, #pass2 {
-    text-align: center;
-    font-size: 1.1em;
-    width: 180px;
-    border-radius: 6px;
-}
-
-#user:focus, #pass:focus, #pass2:focus {
-    outline: none;
-    box-shadow: 0px 0px 1px 1px #55acee;
-}
-
-.hidden {
-    display: none;
-}
-
-#postyMessage {
-    top: 250px;
-    width: 250px;
-    height: 650px;
-    position: absolute;
-    z-index: 200;
-    right: 0px;
-    overflow: hidden;
-}
-
-#postyMessage h3 {
-    width: 200px;
-    position: absolute;
-    top: 0px;
-    left: 20px;
-}
-
-#speech {
-    height: 120px;
-    width: 250px;
-    z-index:300;
-}
-
-#errorMessage {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: red;
-    font-style: italic;
-}
-
-#posty {
-    z-index: 225;
-    margin-top: 20px;
-    margin-left: 75px;
-    height: 250px;
-    width: 250px;
-    -ms-transform: rotate(330deg);
-    -webkit-transform: rotate(330deg); 
-    transform: rotate(330deg);
 }
 
 #postitFeed {
     width: 40%;
     min-width: 400px;
     border: 2px solid #ced107;
-    border-radius: 4px;
-    margin: 0 auto;
+    border-radius: 6px;
+    margin: auto;
     margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .postit {
+    color: black;
+    background-color: #ffffee;
     width: 95%;
-    margin: 0 auto;
-    margin-top: 2px;
-    margin-bottom: 8px;
-    border: 2px solid #ced107;
-    border-radius: 4px;
-    background-color: #fffffb;
-    padding: 10px;
     min-height:200px;
+    margin: auto;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    border: 4px solid #ced107;
+    border-radius: 4px;
+    padding: 10px;
     overflow: scroll;
     display: flex;
     flex-direction: column;
 }
 
-img.postitIcon {
-    height: 50px;
-    width: 50px;
-    border-radius: 4px;
-    margin-top:10px;
-    float:left;
-}
-
-/* No Posts Message */
 h3.emptyPostit {
     width: 400px;
     font-size: 1.5em;
-    margin: 0 auto;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
     text-align: center;
-    margin-top: 18px;
 }
 
 h2.postitTitle {
     display:block;
+    width: 90%;
     float:left;
-    width: 80%;
     font-weight: bold;
     padding-left: 65px;
     font-size: 2em;
@@ -294,12 +214,13 @@ h2.postitTitle {
 
 p.postitContent {
     display:block;
+    width: 80%;
     float:left;
     text-align: left;
-    width: 80%px;
     padding-left: 40px;
     margin-top:0;
-    font-size: 12pt;
+    margin-bottom: 60px;
+    font-size: 14pt;
 }
 
 .postitContent {
@@ -307,19 +228,44 @@ p.postitContent {
 }
 
 footer.postitAuthor {
-    display:block;
-    color:#444;
-    float:right;
+    display:flex;
+    justify-content: flex-start;
+    width: 90%;
+    color:#333;
     text-align: right;
-    width: 100px;
-    padding-right: 40px;
+    padding-left: 20px;
     font-size: 10pt;
 }
 
-.postit:first-child {
-    margin-top: 10px;
+#postyMessage {
+    min-width: 240px;
+    min-height: 640px;
+    position: absolute;
+    z-index: 100;
+    overflow: hidden;
 }
 
-.postit:last-child {
-    margin-bottom:10px;
+#speech {
+    min-height: 120px;
+    min-width: 240px;
+    z-index: 200;
+}
+
+#errorMessage {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(100, 0, 0);
+}
+
+#posty {
+    z-index: 150;
+    height: 200px;
+    width: 200px;
+    -ms-transform: rotate(330deg);
+    -webkit-transform: rotate(330deg); 
+    transform: rotate(330deg);
+}
+
+.hidden {
+    display: none;
 }

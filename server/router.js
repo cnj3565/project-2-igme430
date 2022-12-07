@@ -7,13 +7,16 @@ const router = (app) => {
   app.get('/getPostitsAll', mid.requiresLogin, controllers.Postit.getPostitsAll);
   app.get('/getAccount', mid.requiresSecure, controllers.Account.getAccount);
 
-  app.get('/premium', mid.requiresLogin, controllers.Account.premiumPage);
+  app.get('/premium', mid.requiresSecure, mid.requiresLogin, controllers.Account.premiumPage);
   app.post('/premium', mid.requiresLogin, controllers.Account.premiumToggle);
 
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
 
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
+
+  app.get('/settings', mid.requiresSecure, mid.requiresLogin, controllers.Account.settingsPage);
+  app.post('/pwChange', mid.requiresLogin, controllers.Account.changePassword);
 
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 

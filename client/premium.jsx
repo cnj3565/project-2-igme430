@@ -4,10 +4,10 @@ const handlePremium = (e) => {
     e.preventDefault();
     helper.hideError();
 
-    const premium = e.target.querySelector('#premiumCheck').checked;
+    const premiumBool = e.target.querySelector('#premiumCheck').checked;
     const _csrf = e.target.querySelector("#_csrf").value;
 
-    helper.sendPost(e.target.action, {premium, _csrf});
+    helper.sendPost(e.target.action, {premiumBool, _csrf});
 
     return false;
 }

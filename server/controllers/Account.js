@@ -7,7 +7,7 @@ const premiumPage = (req, res) => {
 };
 
 const premiumToggle = async (req, res) => {
-  const premiumBool = `${req.body.premium}`;
+  const premiumBool = `${req.body.premiumBool}`;
   req.session.account.premium = premiumBool;
 
   return Account.changePremium(req.session.account.username, premiumBool, (err) => {
@@ -63,6 +63,7 @@ const signup = async (req, res) => {
 
   try {
     const hash = await Account.generateHash(pass);
+
     const newAccount = new Account({ username, password: hash, premium });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
@@ -74,6 +75,45 @@ const signup = async (req, res) => {
     }
     return res.status(400).json({ error: 'An error occured.' });
   }
+};
+
+const settingsPage = (req, res) => {
+  res.render('settings', { csrfToken: req.csrfToken() });
+};
+
+const changePassword = async (req, res) => {
+  const username = `${req.body.username}`;
+  const pass = `${req.body.pass}`;
+  const newPass = `${req.body.newPass}`;
+  const newPass2 = `${req.body.newPass2}`;
+
+  if (!username || !pass || !newPass) {
+    return res.status(400).json({ error: 'All fields are required!' });
+  }
+
+  if(pass === newPass) {
+    return res.status(400).json({ error: 'New password is the same as the old password!' });
+  }
+
+  if (newPass !== newPass2) {
+    return res.status(400).json({ error: 'Passwords do not match!' });
+  }
+
+  const hashPass = await Account.generateHash(newPass);
+
+  return Account.authenticate(username, pass, (err, account) => {
+    if (err || !account) {
+      return res.status(401).json({ error: 'Original password is incorrect!' });
+    }
+    
+    return Account.passwordChanger(req.session.account.username, hashPass, (err) => {
+      if (err) {
+        return res.status(400).json({ error: 'An error occured.' });
+      }
+  
+      return res.status(200).json({ error: 'Passwords successfully changed!' });
+    });
+  });
 };
 
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
@@ -89,4 +129,6 @@ module.exports = {
   getAccount,
   premiumPage,
   premiumToggle,
+  changePassword,
+  settingsPage,
 };
