@@ -8,7 +8,7 @@ const premiumPage = (req, res) => {
 
 const premiumToggle = async (req, res) => {
   const premiumBool = `${req.body.premium}`;
-  console.log(`Premium Toggle: ${premiumBool}`);
+  req.session.account.premium = premiumBool;
 
   return Account.changePremium(req.session.account.username, premiumBool, (err) => {
     if (err) {

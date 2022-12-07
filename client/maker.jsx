@@ -67,7 +67,13 @@ const PostitList = (props) => {
 };
 
 const loadPostitsFromServer = async () => {
-    const response = await fetch('/getPostits');
+    let response;
+    if(window.location.pathname === "/dashboard"){
+        response = await fetch('/getPostitsAll');
+    } else {
+        response = await fetch('/getPostits');
+    }
+    
     const data = await response.json();
     ReactDOM.render(
         <PostitList postits={data.postits} />,

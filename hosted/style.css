@@ -286,7 +286,7 @@ h3.emptyPostit {
 h2.postitTitle {
     display:block;
     float:left;
-    width: 200px;
+    width: 80%;
     font-weight: bold;
     padding-left: 65px;
     font-size: 2em;

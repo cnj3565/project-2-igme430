@@ -52,8 +52,7 @@ const makePostit = async (req, res) => {
   }
 };
 
-// Make an option to see everyone's posts,
-// or just your own. Depends on current page
+
 const getPostitsSelf = (req, res) => {
   PostitModel.findByOwner(req.session.account._id, (err, docs) => {
     if (err) {
@@ -65,9 +64,21 @@ const getPostitsSelf = (req, res) => {
 };
 
 const getPostitsAll = (req, res) => {
-  const docs = PostitModel.find();
+  PostitModel.findAll((err, docs) => {
+    if(err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured! ' });
+    }
 
-  return res.json({ postits: docs });
+    // remakes the Postit array in reverse chronological order
+    // which better suits a social media site
+    let revChron = [];
+    for(let i = docs.length-1; i >= 0; i--) {
+      revChron.push(docs[i]);
+    };
+
+    return res.json({ postits: revChron });
+  })
 };
 
 module.exports = {
